@@ -108,7 +108,7 @@ body{
       top:75%;
   }
 
-  .divBotoes > button{
+  .divBotoes > a > button{
     margin-left: 30%;
   }
 
