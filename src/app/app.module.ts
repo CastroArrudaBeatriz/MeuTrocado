@@ -12,6 +12,7 @@ import { GraficoComponent } from './grafico/grafico.component';
 import { SonhoComponent } from './sonho/sonho.component';
 import { routing } from './app.routing';
 
+
 @NgModule({
   declarations: [
     AppComponent,

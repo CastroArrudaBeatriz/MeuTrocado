@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -8,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelComponent implements OnInit {
 
-  constructor() { }
+  closeResult: string;
+
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
+  /*Modal*/
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = ``;
+    }, (reason) => {
+      this.closeResult = ``;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+  
+    if (reason === ModalDismissReasons.ESC) {
+      return '';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return '';
+    } else {
+      return  ``;
+    }
+  }
+
 }
+
+

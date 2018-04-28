@@ -40,51 +40,67 @@
 
 
  <!--categorias-->
- <table class="table table-borderless table-condensed tableCategorias">
-    
+ <table class="table table-borderless table-condensed tableCategoriasLeft">
+  <tbody>
     <tr>
-      <td><img src="../../assets/images/transporte.png" class="categoria"/></td>
-      <td><img src="../../assets/images/almoco.png" class="categoria"/></td>
-      <td><img src="../../assets/images/casa.png" class="categoria"/></td>
+      <td align="center"><img src="../../assets/images/transporte.png"/></td>
+      <td align="center"><img src="../../assets/images/almoco.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"><img src="../../assets/images/casa.png"/></td>
+      <td align="center"><img src="../../assets/images/academia.png"/></td>
     </tr>
-
     <tr>
-      <td><img src="../../assets/images/comida.png" class="categoria"/></td>
-      <td><img src="../../assets/images/academia.png" class="categoria"/></td>
-      <td><img src="../../assets/images/carro.png" class="categoria"/></td>
+      <td align="center"><img src="../../assets/images/carro.png"/></td>
+      <td align="center"><img src="../../assets/images/higiene.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"><img src="../../assets/images/animal.png"/></td>
+      <td align="center"><img src="../../assets/images/roupa.png"/></td>
     </tr>
-
- </table>
-
- <table class="table table-borderless table-condensed tableCategorias2">
-    
-  <tr>
-    <td><img src="../../assets/images/higiene.png" class="categoria"/></td>
-    <td><img src="../../assets/images/animal.png" class="categoria"/></td>
-    <td><img src="../../assets/images/roupa.png" class="categoria"/></td>
-  </tr>
-
-  <tr>
-    <td><img src="../../assets/images/entretenimento.png" class="categoria"/></td>
-    <td><img src="../../assets/images/escola.png" class="categoria"/></td>
-    <td><img src="../../assets/images/saude.png" class="categoria"/></td>
-  </tr>
-
+    <tr>
+      <td align="center"><img src="../../assets/images/entretenimento.png"/></td>
+      <td align="center"><img src="../../assets/images/escola.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"><img src="../../assets/images/saude.png"/></td>
+      <td align="center"><img src="../../assets/images/cartao.png"/></td>
+    </tr>
+  </tbody>
 </table>
 
-<!--restante-->
-<span href="#" class="restante list-group-item list-group-item-warning">Saldo:</span>
 
-<!--botoes renda e gasto-->
-<div class="divBotoes">
-  <a href="/renda"><button type="button" class="btn btn-success btn-circle btn-lg"  >
-      <img src="../../assets/images/add.png"/>
-    </button></a>
-    
-    <a href="/gasto"><button type="button" class="btn btn-danger btn-circle btn-lg"  >
-      <img src="../../assets/images/remove.png"/>
-    </button></a>
-</div>
+<!--Modal-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>
+
+
+
+
 
 
 
