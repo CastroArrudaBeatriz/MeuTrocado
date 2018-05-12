@@ -45,7 +45,20 @@ body{
    right: 3%;
 }
 
+.tableCategoriasLeft tbody tr td img:hover{
+    opacity: 0.30;
+}
+
 .table-borderless td,
 .table-borderless th {
     border: 0;
+    
+}
+
+.collapsedRendaButton{
+    float: left;
+    position: absolute;
+    top: 80%;
+    left: 43%;
+    
 }

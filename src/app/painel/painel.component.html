@@ -43,56 +43,86 @@
  <table class="table table-borderless table-condensed tableCategoriasLeft">
   <tbody>
     <tr>
-      <td align="center"><img src="../../assets/images/transporte.png"/></td>
-      <td align="center"><img src="../../assets/images/almoco.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/transporte.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/almoco.png"/></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
-      <td align="center"><img src="../../assets/images/casa.png"/></td>
-      <td align="center"><img src="../../assets/images/academia.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/casa.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/academia.png"/></td>
     </tr>
     <tr>
-      <td align="center"><img src="../../assets/images/carro.png"/></td>
-      <td align="center"><img src="../../assets/images/higiene.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/carro.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/higiene.png"/></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
-      <td align="center"><img src="../../assets/images/animal.png"/></td>
-      <td align="center"><img src="../../assets/images/roupa.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/animal.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/roupa.png"/></td>
     </tr>
     <tr>
-      <td align="center"><img src="../../assets/images/entretenimento.png"/></td>
-      <td align="center"><img src="../../assets/images/escola.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/entretenimento.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/escola.png"/></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
       <td align="center"></td>
-      <td align="center"><img src="../../assets/images/saude.png"/></td>
-      <td align="center"><img src="../../assets/images/cartao.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/saude.png"/></td>
+      <td align="center" (click)="open(content)"><img src="../../assets/images/cartao.png"/></td>
     </tr>
   </tbody>
 </table>
 
 
+   <p class="collapsedRendaButton">
+    <button style="opacity: 0.80;" type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      Adicionar Renda
+    </button>
+  </p>
+  <div id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div class="card">
+      <div class="card-body">
+        You can collapse this card by clicking Toggle
+      </div>
+    </div>
+  </div>
+
+
+
+
 <!--Modal-->
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
+    <h5>Despesa</h5>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <p>One fine body&hellip;</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-  </div>
-</ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  <div class="modal-body">
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input type="number" class="form-control" placeholder="valor">
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Adicionar anotação">
+    </div>
+
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" >Adicionar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
+  </div>
+
+</ng-template>
 
 <hr>
 

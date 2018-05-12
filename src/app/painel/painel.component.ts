@@ -37,6 +37,9 @@ export class PainelComponent implements OnInit {
     }
   }
 
+  /*Collapsed*/
+  public isCollapsed = true;
+
 }
 
 
