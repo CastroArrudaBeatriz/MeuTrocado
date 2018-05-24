@@ -40,6 +40,23 @@ export class PainelComponent implements OnInit {
   /*Collapsed*/
   public isCollapsed = true;
 
+
+  /*variaveis painel*/
+  public renda: number = 0; 
+  public gasto: number = 0;
+  
+  public adicionarGasto(valor: number): void{
+
+    this.gasto = this.gasto +  Number(valor);
+
+  }
+
+  public adicionarRenda(valor: number): void{
+
+    this.renda = this.renda +  Number(valor);
+
+  }
+
 }
 
 

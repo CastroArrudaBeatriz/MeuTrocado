@@ -35,9 +35,29 @@
 <!--div circular-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="master">
-    <div></div>
+     <div class="DivCirculo">
+      <div>
+          
+          
+        
+         <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+              </div>
+              <input type="number" value="{{renda}}" class="form-control" style="text-align: center; color:green	; width: 50%; background-color: #E0FFFF;" disabled>
+          </div>
+          
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+              </div>
+              <input type="number" value="{{gasto}}" class="form-control" style="text-align: center ; color: red	; width: 50%;  background-color: #E0FFFF;" disabled>
+          </div>
+              
+        </div>  
+     </div>
+      
  </div>
-
 
  <!--categorias-->
  <table class="table table-borderless table-condensed tableCategoriasLeft">
@@ -75,18 +95,39 @@
   </tbody>
 </table>
 
+<!--Adicionar Renda-->
 
    <p class="collapsedRendaButton">
-    <button style="opacity: 0.80;" type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed"
+    <button style="opacity: 0.80;" type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed ; ValorRenda.value = 0 ;"
             [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
       Adicionar Renda
     </button>
   </p>
+  
   <div id="collapseExample" [ngbCollapse]="isCollapsed">
-    <div class="card">
-      <div class="card-body">
-        You can collapse this card by clicking Toggle
+    <div class="card bg-light mb-3">
+      <div class="card-header">
+        Renda
       </div>
+
+      <div class="card-body">
+      
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="number" class="form-control" #ValorRenda placeholder="valor"  (keyup.enter)="adicionarRenda(ValorRenda.value)">
+        </div>
+    
+      </div>
+
+      <div class="card-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="adicionarRenda(ValorRenda.value) ; isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" 
+        aria-controls="collapseExample">Adicionar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Cancelar</button>
+      </div>
+
     </div>
   </div>
 
@@ -108,17 +149,13 @@
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
       </div>
-      <input type="number" class="form-control" placeholder="valor">
-    </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Adicionar anotação">
+      <input type="number" class="form-control" #ValorGasto placeholder="valor"  (keyup.enter)="adicionarGasto(ValorGasto.value)">
     </div>
 
   </div>
   
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" >Adicionar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="adicionarGasto(ValorGasto.value)">Adicionar</button>
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
   </div>
 
