@@ -44,17 +44,19 @@ export class PainelComponent implements OnInit {
   /*variaveis painel*/
   public renda: number = 0; 
   public gasto: number = 0;
+  public saldo: number ;
   
   public adicionarGasto(valor: number): void{
 
     this.gasto = this.gasto +  Number(valor);
+    this.saldo = this.renda - this.gasto;
 
   }
 
   public adicionarRenda(valor: number): void{
 
     this.renda = this.renda +  Number(valor);
-
+    this.saldo = this.renda - this.gasto;
   }
 
 }

@@ -62,3 +62,12 @@ body{
     left: 43%;
     
 }
+
+.saldoRestante{
+    float: left;
+    position: absolute;
+    top: 72%;
+    left: 40%;
+    width: 15%;
+    
+}
