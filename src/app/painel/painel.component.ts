@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import { AngularFireDatabase } from 'angularfire2/database'; 
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-painel',
@@ -11,9 +14,17 @@ export class PainelComponent implements OnInit {
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal) { }
+  controleObservable: Observable<any[]>;
+  
+  constructor(private modalService: NgbModal , private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.controleObservable = this.getControle('/controle/PhFgDvDR8WPGbM4ASAuV');
+  }
+
+  
+  getControle(listPath): Observable<any[]> {
+    return this.db.list(listPath).valueChanges();
   }
 
   /*Modal*/
@@ -58,6 +69,7 @@ export class PainelComponent implements OnInit {
     this.renda = this.renda +  Number(valor);
     this.saldo = this.renda - this.gasto;
   }
+
 
 }
 
