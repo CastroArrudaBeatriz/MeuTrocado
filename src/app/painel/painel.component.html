@@ -1,0 +1,204 @@
+
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  
+  <!--menu-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+    
+      <li class="nav-item dropdown">
+        <span class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true">
+          <img src="../../assets/images/menu.png" class="menuIcon"/>
+        </span>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="">Painel</a>
+        </div>
+      </li>
+    
+    </ul>
+  </div>
+
+  <!--Logo-->
+  <a class="logo">
+    <img src="../../assets/images/logo.png" />
+    {{title}}
+  </a>
+
+</nav>
+
+
+
+
+
+
+
+
+
+<!--div circular-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="master">
+     <div class="DivCirculo">
+      <div>
+          
+          
+        
+         <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+              </div>
+              
+              <input *ngFor="let controle of controles | async" type="number" value="{{controle.renda}}" id="RendaBanco" class="form-control" style="text-align: center; color:green	; width: 50%; background-color: #E0FFFF;" disabled>
+              
+          </div>
+          
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+              </div>
+              <input *ngFor="let controle of controles | async" type="number" value="{{controle.gasto}}" class="form-control" style="text-align: center ; color: red	; width: 50%;  background-color: #E0FFFF;" disabled>
+          </div>
+              
+        </div>  
+     </div>
+      
+ </div>
+
+
+
+
+
+
+
+ <!--categorias-->
+ <table class="table table-borderless table-condensed tableCategoriasLeft">
+  <tbody>
+    <tr>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/transporte.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/almoco.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/casa.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/academia.png"/></td>
+    </tr>
+    <tr>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/carro.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/higiene.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/animal.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/roupa.png"/></td>
+    </tr>
+    <tr>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/entretenimento.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/escola.png"/></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center"></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/saude.png"/></td>
+      <td align="center" (click)="open(content) "><img src="../../assets/images/cartao.png"/></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<!--Modal Gasto-->
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h5>Despesa</h5>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+          <div class="modal-body">
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" #ValorGasto placeholder="valor" [(ngModel)]="ValorGastoValue" name="gasto" required>
+            </div>
+
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="adicionarGasto(ValorGasto.value) ; c('Close click')">Adicionar</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
+          </div>
+          
+    </ng-template>
+  
+
+    <hr>
+
+
+
+
+<pre>{{closeResult}}</pre>
+
+<!--Adicionar Renda-->
+<form (ngSubmit)="adicionarRenda(ValorRenda.value)">
+   
+  <p class="collapsedRendaButton">
+    <button style="opacity: 0.80;" type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed ;ValorRenda.value = 0"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      Adicionar Renda
+    </button>
+  </p>
+  
+  <div id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div class="card bg-light mb-3">
+      <div class="card-header">
+        Renda
+      </div>
+
+      <div class="card-body">
+      
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="number" class="form-control" #ValorRenda placeholder="valor" required [(ngModel)]="ValorRendaValue" name="renda"  
+            (keyup.enter)="adicionarRenda(ValorRenda.value) ; isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" 
+          aria-controls="collapseExample">
+        </div>
+    
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-outline-dark" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" 
+        aria-controls="collapseExample">Adicionar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</form>  
+
+
+
+
+
+
+  <!--Input restante-->
+  <div class="input-group mb-3 saldoRestante">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Saldo:</span>
+    </div>
+    <input *ngFor="let controle of controles | async" type="number" value="{{controle.saldo}}" class="form-control" aria-describedby="basic-addon1" style="color: #FFD700; text-align: center ; background-color: #FFFACD;" disabled>
+  </div>
