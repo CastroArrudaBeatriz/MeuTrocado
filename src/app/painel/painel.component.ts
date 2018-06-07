@@ -17,14 +17,16 @@ export class PainelComponent implements OnInit {
   title = 'Meu Trocado';
 
   closeResult: string;
+  closeResultNovoMes: string;
 
   RendaValue = '';
   
   controles: Observable<any[]>;
- 
+  meses: Observable<any[]>;
   
   constructor(public db: AngularFireDatabase , private modalService: NgbModal) { 
     this.controles = db.list('controles').valueChanges();
+    this.meses = db.list('meses').valueChanges();
   }
   
   
@@ -55,6 +57,28 @@ export class PainelComponent implements OnInit {
     }
   }
 
+
+  /*Modal Novo Mes */
+  openNovoMes(contentNovoMes) {
+    this.modalService.open(contentNovoMes).result.then((result) => {
+      this.closeResultNovoMes = ``;
+    }, (reason) => {
+      this.closeResultNovoMes = ``;
+    });
+  }
+
+  private getDismissReasonNovoMes(reason: any): string {
+  
+    if (reason === ModalDismissReasons.ESC) {
+      return '';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return '';
+    } else {
+      return  ``;
+    }
+  }
+
+
   /*Collapsed*/
   public isCollapsed = true;
 
@@ -70,7 +94,6 @@ export class PainelComponent implements OnInit {
     this.saldo = this.renda - this.gasto;
     this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { gasto: this.gasto , saldo: this.saldo });
     
-    //this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { renda: 0 , gasto: 0 , saldo: 0 });
   }
 
   public adicionarRenda(valor: number): void{
@@ -79,7 +102,10 @@ export class PainelComponent implements OnInit {
     this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { renda: this.renda , saldo: this.saldo });
   }
 
-
+  public iniciarNovoMes(mes: string){
+    this.db.list('/meses').push({mes: mes , gasto: this.gasto});
+    this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { renda: 0 , gasto: 0 , saldo: 0 });
+  }
 
 
 }

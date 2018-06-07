@@ -15,6 +15,7 @@
         </span>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="">Painel</a>
+          <a class="dropdown-item" href="grafico">Grafico</a>
         </div>
       </li>
     
@@ -117,6 +118,7 @@
 <!--Modal Gasto-->
 
     <ng-template #content let-c="close" let-d="dismiss">
+      
       <div class="modal-header">
         <h5>Despesa</h5>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -130,14 +132,14 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" #ValorGasto placeholder="valor" [(ngModel)]="ValorGastoValue" name="gasto" required>
+              <input type="number" class="form-control" #ValorGasto placeholder="valor" [(ngModel)]="ValorGastoValue" name="ValorGasto" required>
             </div>
 
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="adicionarGasto(ValorGasto.value) ; c('Close click')">Adicionar</button>
-            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-outline-dark" (click)="adicionarGasto(ValorGasto.value); c('Close click') ">Adicionar</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click') ">Cancelar</button>
           </div>
           
     </ng-template>
@@ -153,7 +155,7 @@
 <!--Adicionar Renda-->
 <form (ngSubmit)="adicionarRenda(ValorRenda.value)">
    
-  <p class="collapsedRendaButton">
+  <p class="collapsedRendaButton" style="position: absolute; float: left ; left: 37%; bottom: 14%;">
     <button style="opacity: 0.80;" type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed ;ValorRenda.value = 0"
             [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
       Adicionar Renda
@@ -196,9 +198,65 @@
 
 
   <!--Input restante-->
-  <div class="input-group mb-3 saldoRestante">
+  <div class="input-group mb-3 saldoRestante" style="width: 22%;left: 37%;">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Saldo:</span>
     </div>
     <input *ngFor="let controle of controles | async" type="number" value="{{controle.saldo}}" class="form-control" aria-describedby="basic-addon1" style="color: #FFD700; text-align: center ; background-color: #FFFACD;" disabled>
   </div>
+
+
+  <!--Modal Novo Mes-->
+  
+  <ng-template #contentNovoMes let-c="close" let-d="dismiss">
+    
+      <div class="modal-header">
+        <h5>Novo Mês</h5>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+          <div class="modal-body">
+  
+              <select class="form-control form-control-sm" #mes name="mes" [(ngModel)]="mesValue">
+                  <option value="Jan">Jan</option>
+                  <option value="Fev">Fev</option>
+                  <option value="Mar">Mar</option>
+                  <option value="Abr">Abr</option>
+                  <option value="Mai">Mai</option>
+                  <option value="Jun">Jun</option>
+                  <option value="Jul">Jul</option>
+                  <option value="Ago">Ago</option>
+                  <option value="Set">Set</option>
+                  <option value="Out">Out</option>
+                  <option value="Nov">Nov</option>
+                  <option value="Dez">Dez</option>
+              </select> 
+  
+  
+          </div>  
+            
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="iniciarNovoMes(mes.value) ; c('Close click')">confirmar</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">cancelar</button>
+           </div>
+          
+    </ng-template>
+  
+  
+    <hr>
+  
+    <pre>{{closeResultNovoMes}}</pre>
+  
+
+  <!--Botão Iniciar novo mês -->
+  <div>
+    <button style="opacity: 0.80;position: absolute; bottom: 14%; float: right; right: 41%;" (click)="openNovoMes(contentNovoMes) " type="button" class="btn btn-info" aria-controls="collapseExample">
+        Iniciar novo mês
+    </button>
+  </div>
+
+
+
+  

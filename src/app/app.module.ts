@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { routing } from './app.routing';
 
 import { PainelComponent } from './painel/painel.component';
+import { GraficoComponent } from './grafico/grafico.component';
 
  
 
@@ -20,7 +21,8 @@ import { PainelComponent } from './painel/painel.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PainelComponent
+    PainelComponent,
+    GraficoComponent
   ],
   imports: [
     NgbModule.forRoot(),
