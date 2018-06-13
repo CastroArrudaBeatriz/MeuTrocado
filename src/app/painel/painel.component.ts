@@ -24,6 +24,7 @@ export class PainelComponent implements OnInit {
   controles: Observable<any[]>;
   meses: Observable<any[]>;
   
+
   constructor(public db: AngularFireDatabase , private modalService: NgbModal) { 
     this.controles = db.list('controles').valueChanges();
     this.meses = db.list('meses').valueChanges();
@@ -41,8 +42,10 @@ export class PainelComponent implements OnInit {
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = ``;
+      
     }, (reason) => {
       this.closeResult = ``;
+      
     });
   }
 
@@ -88,6 +91,9 @@ export class PainelComponent implements OnInit {
   public gasto: number = 0;
   public saldo: number ;
   
+  /* variavel mês atual*/
+  public mesAtual: string = '';
+
   public adicionarGasto(valor: number): void{
 
     this.gasto = this.gasto +  Number(valor);
@@ -100,12 +106,22 @@ export class PainelComponent implements OnInit {
     this.renda = this.renda +  Number(valor);
     this.saldo = this.renda - this.gasto;
     this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { renda: this.renda , saldo: this.saldo });
+    
+
   }
 
   public iniciarNovoMes(mes: string){
-    this.db.list('/meses').push({mes: mes , gasto: this.gasto});
+    
+    if(this.mesAtual != ''){
+      this.db.list('/meses').push({mes: this.mesAtual , gasto: this.gasto});
+    }
+    
     this.db.list('/controles').update( '-LE6orfO5jwhgPT-ps58', { renda: 0 , gasto: 0 , saldo: 0 });
+    
+    this.mesAtual = mes;
+    this.gasto = 0;
+    this.renda = 0;
+    this.saldo = 0;
   }
-
 
 }

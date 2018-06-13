@@ -44,7 +44,7 @@
      <div class="DivCirculo">
       <div>
           
-          
+          <h6 style="width: 100%; text-align: center;">{{mesAtual}}</h6>         
         
          <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -132,7 +132,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" #ValorGasto placeholder="valor" [(ngModel)]="ValorGastoValue" name="ValorGasto" required>
+              <input type="number" onfocus="this.value= 0 " class="form-control" #ValorGasto placeholder="valor" required [(ngModel)]="ValorGastoValue" name="gasto" >
             </div>
 
           </div>
