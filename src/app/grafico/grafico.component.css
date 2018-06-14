@@ -3,3 +3,13 @@
     left:45%;
     margin-left:-45px;
 }
+
+.canvasChart{
+    padding-top: 6%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;   
+}
