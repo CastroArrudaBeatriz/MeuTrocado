@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">Simluador de Econômias</h5>
+      <h6 class="card-subtitle mb-2 text-muted" style="padding-left: 1%;">Descubra quanto deve poupar para alcançar o tesouro desejado.</h6>
+      
+
+
+      <form (ngSubmit)="simular(valor.value , tempo.value , unidade.value)">
+        <div class="form-group">
+          <label>Tesouro</label>
+          <input type="text" class="form-control">
+          <small class="form-text text-muted">Exemplo: casa, carro, viagem.</small>
+        </div>
+
+        <div class="form-group">
+          <label>Valor</label>
+          <input type="number" class="form-control" #valor>
+          <small class="form-text text-muted">Observação: digite o valor sem pontuações - Exemplo (10000).</small>
+        </div>
+
+        
+        <div class="form-group" >
+            <label>Tempo</label>
+            <input type="number" class="form-control" #tempo>
+            <select class="form-control form-control-sm" style="margin-top: 1%;" #unidade>
+                <option>ano</option>
+                <option>mês</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Simular</button>
+      </form>
+    </div>
+  </div>

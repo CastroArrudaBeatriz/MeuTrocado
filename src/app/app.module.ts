@@ -14,6 +14,8 @@ import { routing } from './app.routing';
 
 import { PainelComponent } from './painel/painel.component';
 import { GraficoComponent } from './grafico/grafico.component';
+import { SimuladorComponent } from './simulador/simulador.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
  
 
@@ -22,7 +24,9 @@ import { GraficoComponent } from './grafico/grafico.component';
   declarations: [
     AppComponent,
     PainelComponent,
-    GraficoComponent
+    GraficoComponent,
+    SimuladorComponent,
+    NavbarComponent
   ],
   imports: [
     NgbModule.forRoot(),
